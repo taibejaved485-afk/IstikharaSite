@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header.tsx';
 import Hero from './components/Hero.tsx';
-import AyatSlider from './components/AyatSlider.tsx';
 import AdminPanel from './components/AdminPanel.tsx';
 import ChatWidget from './components/ChatWidget.tsx';
 import ServicePage from './components/ServicePage.tsx';
@@ -107,7 +106,7 @@ const App: React.FC = () => {
 
       case Page.Blog:
         return (
-          <div className="container mx-auto px-4 py-20">
+          <div className="container mx-auto px-4 py-20 mt-32">
             <div className="reveal text-center mb-16">
               <h2 className="text-5xl md:text-7xl font-title font-bold text-gold golden-glow">The Spiritual Journal</h2>
               <div className="w-32 h-1 bg-amber-500 mx-auto mt-6 opacity-40"></div>
@@ -143,7 +142,7 @@ const App: React.FC = () => {
       case Page.Home:
       default:
         return (
-          <>
+          <div className="mt-32">
             <Hero />
             
             <SpecializedGrid onPageChange={handleNav} />
@@ -217,7 +216,7 @@ const App: React.FC = () => {
               </div>
               <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber-900/50 to-transparent"></div>
             </section>
-          </>
+          </div>
         );
     }
   };
@@ -225,7 +224,6 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen selection:bg-amber-500 selection:text-emerald-950">
       <CustomCursor />
-      <AyatSlider />
       <Header onPageChange={handleNav} currentPage={currentPage} />
       
       <main className="flex-1">
