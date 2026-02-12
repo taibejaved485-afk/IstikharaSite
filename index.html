@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="font-size: 92%;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +27,7 @@
         --wa-green: #25D366;
       }
 
-      /* Base Layout & Reset */
+      /* Base Layout & Global Scaling */
       html, body {
         margin: 0;
         padding: 0;
@@ -39,15 +38,23 @@
         -webkit-font-smoothing: antialiased;
       }
 
-      /* Hard-coded Urdu Typography Fix */
+      /* Custom Container Scaling for Professional Look */
+      @media (min-width: 1280px) {
+        .container { max-width: 1140px !important; }
+      }
+      @media (min-width: 1536px) {
+        .container { max-width: 1320px !important; }
+      }
+
+      /* Hard-coded Urdu Typography Fix - Prevents Dots Clipping */
       .urdu-text, 
       .font-urdu,
       [style*="Noto Nastaliq Urdu"],
       [style*="font-urdu"] {
         font-family: 'Noto Nastaliq Urdu', serif !important;
-        line-height: 2.5 !important; 
-        padding-bottom: 45px !important;
-        margin-bottom: -30px !important;
+        line-height: 2.6 !important; 
+        padding-bottom: 15px !important;
+        margin-bottom: -10px !important;
         overflow: visible !important;
         text-rendering: optimizeLegibility;
         direction: rtl;
@@ -62,7 +69,7 @@
 
       .reveal {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
         transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
       }
       .reveal.active {
