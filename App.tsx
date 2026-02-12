@@ -11,6 +11,7 @@ import SpecializedGrid from './components/SpecializedGrid.tsx';
 import BenefitsSection from './components/BenefitsSection.tsx';
 import TrustCounter from './components/TrustCounter.tsx';
 import StoryModal from './components/StoryModal.tsx';
+import ContactForm from './components/ContactForm.tsx';
 import Footer from './components/Footer.tsx';
 import CustomCursor from './components/CustomCursor.tsx';
 import WhatsAppButton from './components/WhatsAppButton.tsx';
@@ -205,6 +206,8 @@ const App: React.FC = () => {
       
       <main className="flex-1">
         {renderContent()}
+        {/* Contact Form is now visible globally for deep linking */}
+        <ContactForm />
       </main>
 
       <Footer onPageChange={handleNav} />

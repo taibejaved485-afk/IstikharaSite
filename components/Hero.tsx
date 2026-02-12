@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Hero: React.FC = () => {
@@ -29,12 +28,18 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="reveal flex flex-col sm:flex-row gap-6" style={{ transitionDelay: '600ms' }}>
-            <button className="px-10 py-5 bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold rounded-full transition-all duration-300 shadow-2xl shadow-amber-500/30 transform hover:-translate-y-1 hover-shine">
-              Explore Services
-            </button>
-            <button className="px-10 py-5 bg-transparent border-2 border-amber-500/50 hover:border-amber-500 text-amber-500 font-bold rounded-full transition-all duration-300 transform hover:-translate-y-1 backdrop-blur-md">
-              Read Our Journal
-            </button>
+            <a 
+              href="#contact-section"
+              className="px-10 py-5 bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold rounded-full transition-all duration-300 shadow-2xl shadow-amber-500/30 transform hover:-translate-y-1 hover-shine flex items-center justify-center"
+            >
+              Rabta Karein
+            </a>
+            <a 
+              href="#contact-section"
+              className="px-10 py-5 bg-transparent border-2 border-amber-500/50 hover:border-amber-500 text-amber-500 font-bold rounded-full transition-all duration-300 transform hover:-translate-y-1 backdrop-blur-md flex items-center justify-center"
+            >
+              Get Guidance
+            </a>
           </div>
         </div>
       </div>

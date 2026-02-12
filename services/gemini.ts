@@ -1,39 +1,44 @@
-
-import { GoogleGenAI } from "@google/genai";
 import { ChatMessage } from "../types";
 
-// Initialize safely. If process.env.API_KEY is missing, it won't crash the whole module evaluation.
-const getAIClient = () => {
-  const apiKey = (window as any).process?.env?.API_KEY || "";
-  return new GoogleGenAI({ apiKey });
-};
-
+/**
+ * Custom local chat logic to provide specific Urdu answers without using an external API.
+ */
 export const getIslamicAssistantResponse = async (history: ChatMessage[], message: string) => {
-  try {
-    const ai = getAIClient();
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: [
-        ...history.map(m => ({ role: m.role, parts: m.parts })),
-        { role: 'user', parts: [{ text: message }] }
-      ],
-      config: {
-        systemInstruction: `You are the 'Noori Islamic Assistant' for an Islamic website. Your personality is humble, respectful, and wise.
+  // Simulate a small delay for a more natural feel
+  await new Promise(resolve => setTimeout(resolve, 600));
 
-Guidelines:
-- Always greet with 'Assalam-o-Alaikum'.
-- Use polite Urdu (Aap/Janab) and maintain a respectful tone.
-- Answer questions regarding Marriage, Health, Wazaif, and Success only based on authentic Islamic teachings.
-- If a user asks about complex 'Jadu' (magic) or 'Talisman' (taweez) issues, provide spiritual comfort but kindly advise them to consult a qualified local scholar (Mufti or Alim).
-- Strictly avoid political or controversial sectarian debates.
-- Keep answers concise and well-formatted using bullet points for readability.`,
-        temperature: 0.6,
-      }
-    });
-    
-    return response.text;
-  } catch (error) {
-    console.error("AI Assistant Error:", error);
-    return "Assalam-o-Alaikum, mazrat chahtay hain, is waqt rabta nahi ho pa raha. Baraye karam thori der baad koshish karein.";
+  const input = message.toLowerCase();
+
+  // Salam ka Jawab
+  if (input.includes('salam') || input.includes('hi') || input.includes('hello')) {
+    return 'Walaikum Assalam! IstikharaSite par khush amdeed. Hum aapki kis tarah madad kar sakte hain?';
   }
+
+  // Privacy/Data
+  if (input.includes('privacy') || input.includes('data') || input.includes('makhfi') || input.includes('raaz')) {
+    return 'IstikharaSite aapki makhfi malomat (privacy) ka pura khayal rakhti hai. Aapka data kisi teesre shakhs ko nahi diya jata.';
+  }
+
+  // Time/Timing
+  if (input.includes('time') || input.includes('timing') || input.includes('kab tak') || input.includes('waqt')) {
+    return 'Istikhara ka jawab aam taur par 24 se 48 ghanton mein de diya jata hai.';
+  }
+
+  // Method/Tariqa
+  if (input.includes('tariqa') || input.includes('method') || input.includes('process')) {
+    return 'Hum Quran-o-Sunnat ke mutabiq masnoon tariqa-e-istikhara ikhtiyar karte hain.';
+  }
+
+  // Istikhara Query
+  if (input.includes('istikhara') || input.includes('help') || input.includes('madad')) {
+    return 'Istikhara ke liye aap apna naam aur masla yahan likhein ya hamare WhatsApp button par click karke direct rabta karein.';
+  }
+
+  // Fees/Hadiya
+  if (input.includes('fees') || input.includes('hadiya') || input.includes('pay') || input.includes('paisa')) {
+    return 'Hamari zyadatar malomat muft hain, lekin makhsoos amliyat ke liye aap WhatsApp par rabta kar sakte hain.';
+  }
+
+  // Default Response
+  return 'Mohtaram saarif, aapka sawal mil gaya hai. Behtar rehnumayi ke liye hamare WhatsApp par rabta karein.';
 };

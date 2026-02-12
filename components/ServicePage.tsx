@@ -79,12 +79,18 @@ const ServicePage: React.FC<ServicePageProps> = ({ topic }) => {
       <div className="mt-12 text-center border-t border-amber-900/20 pt-20">
         <h4 className="text-2xl font-urdu text-amber-100 mb-8 urdu-text leading-[2.2] pb-6">کیا آپ کو کسی مخصوص روحانی مدد کی ضرورت ہے؟</h4>
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          <button className="px-12 py-5 bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold rounded-full transition-all shadow-2xl shadow-amber-500/30 hover-shine transform hover:-translate-y-1">
+          <a 
+            href="#contact-section"
+            className="px-12 py-5 bg-amber-500 hover:bg-amber-600 text-emerald-950 font-bold rounded-full transition-all shadow-2xl shadow-amber-500/30 hover-shine transform hover:-translate-y-1 flex items-center justify-center"
+          >
             ہمارے ماہرین سے رابطہ کریں
-          </button>
-          <button className="px-12 py-5 bg-transparent border-2 border-amber-500 text-amber-500 font-bold rounded-full transition-all hover:bg-amber-500/10 transform hover:-translate-y-1">
+          </a>
+          <a 
+            href="#contact-section"
+            className="px-12 py-5 bg-transparent border-2 border-amber-500 text-amber-500 font-bold rounded-full transition-all hover:bg-amber-500/10 transform hover:-translate-y-1 flex items-center justify-center"
+          >
             مفت استخارہ فارم
-          </button>
+          </a>
         </div>
       </div>
     </div>

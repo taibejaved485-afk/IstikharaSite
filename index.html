@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 92%;">
+<html lang="en" style="font-size: 90%; scroll-behavior: smooth;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -46,13 +46,13 @@
         .container { max-width: 1320px !important; }
       }
 
-      /* Hard-coded Urdu Typography Fix - Prevents Dots Clipping */
+      /* Hard-coded Urdu Typography Fix - Prevents Dots Clipping with 2.5 line-height */
       .urdu-text, 
       .font-urdu,
       [style*="Noto Nastaliq Urdu"],
       [style*="font-urdu"] {
         font-family: 'Noto Nastaliq Urdu', serif !important;
-        line-height: 2.6 !important; 
+        line-height: 2.5 !important; 
         padding-bottom: 15px !important;
         margin-bottom: -10px !important;
         overflow: visible !important;
@@ -132,6 +132,34 @@
       ::-webkit-scrollbar-thumb {
         background: var(--gold);
         border-radius: 4px;
+      }
+
+      /* Pulse and Shine animations */
+      @keyframes pulse-gold {
+        0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+        70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+      }
+      .pulse-gold { animation: pulse-gold 2s infinite; }
+      
+      .hover-shine {
+        position: relative;
+        overflow: hidden;
+      }
+      .hover-shine::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: rotate(45deg);
+        transition: 0.5s;
+      }
+      .hover-shine:hover::after {
+        left: 100%;
+        top: 100%;
       }
     </style>
 

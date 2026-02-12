@@ -60,7 +60,7 @@ const SpecializedGrid: React.FC<SpecializedGridProps> = ({ onPageChange }) => {
               style={{ transitionDelay: `${idx * 150}ms` }}
             >
               {/* Icon Container */}
-              <div className="w-24 h-24 bg-emerald-950/50 rounded-full border border-amber-900/20 flex items-center justify-center text-5xl mb-8 group-hover:scale-110 group-hover:bg-amber-500/5 transition-all duration-500 shadow-inner">
+              <div className="w-24 h-24 bg-emerald-950/50 rounded-full border border-amber-900/20 flex items-center justify-center text-5xl mb-8 group-hover:scale-110 group-hover:bg-amber-500/5 transition-all duration-500 shadow-inner shadow-black">
                 <span className="grayscale-[0.5] group-hover:grayscale-0 transition-all">{cat.icon}</span>
               </div>
 
@@ -77,12 +77,12 @@ const SpecializedGrid: React.FC<SpecializedGridProps> = ({ onPageChange }) => {
               <div className="w-12 h-px bg-amber-900/30 group-hover:w-24 group-hover:bg-amber-500/50 transition-all duration-500 mb-8"></div>
 
               {/* Action Button */}
-              <button 
-                onClick={() => onPageChange(Page.Tawwez, cat.topic)}
-                className="px-8 py-3 bg-emerald-950 border border-amber-500/20 text-gold rounded-2xl font-bold text-xs tracking-widest hover:bg-amber-500 hover:text-emerald-950 transition-all duration-300 hover-shine"
+              <a 
+                href="#contact-section"
+                className="px-8 py-3 bg-emerald-950 border border-amber-500/20 text-gold rounded-2xl font-bold text-xs tracking-widest hover:bg-amber-500 hover:text-emerald-950 transition-all duration-300 hover-shine flex items-center justify-center"
               >
-                LEARN MORE
-              </button>
+                GET GUIDANCE
+              </a>
             </div>
           ))}
         </div>

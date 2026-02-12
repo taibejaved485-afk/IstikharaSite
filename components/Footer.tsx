@@ -15,7 +15,7 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
 
   const quickLinks = [
     { label: 'About Us', page: Page.About },
-    { label: 'Contact', page: Page.Counselling },
+    { label: 'Contact Us', page: Page.Home, href: '#contact-section' },
     { label: 'FAQ', page: Page.FAQ },
     { label: 'Testimonials', page: Page.Testimonials },
     { label: 'Privacy Policy', page: Page.Privacy },
@@ -79,13 +79,23 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
             <ul className="grid grid-cols-1 gap-y-4">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <button 
-                    onClick={() => onPageChange(link.page)}
-                    className="text-amber-100/50 hover:text-amber-400 transition-all duration-300 flex items-center gap-3 group text-sm font-title tracking-wide"
-                  >
-                    <span className="text-amber-500/50 group-hover:text-amber-400 transform group-hover:translate-x-1 transition-transform">→</span>
-                    {link.label}
-                  </button>
+                  {link.href ? (
+                    <a 
+                      href={link.href}
+                      className="text-amber-100/50 hover:text-amber-400 transition-all duration-300 flex items-center gap-3 group text-sm font-title tracking-wide"
+                    >
+                      <span className="text-amber-500/50 group-hover:text-amber-400 transform group-hover:translate-x-1 transition-transform">→</span>
+                      {link.label}
+                    </a>
+                  ) : (
+                    <button 
+                      onClick={() => onPageChange(link.page)}
+                      className="text-amber-100/50 hover:text-amber-400 transition-all duration-300 flex items-center gap-3 group text-sm font-title tracking-wide"
+                    >
+                      <span className="text-amber-500/50 group-hover:text-amber-400 transform group-hover:translate-x-1 transition-transform">→</span>
+                      {link.label}
+                    </button>
+                  )}
                 </li>
               ))}
             </ul>
