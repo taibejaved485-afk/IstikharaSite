@@ -17,7 +17,7 @@
         --wa-green: #25D366;
       }
 
-      /* Hard-coded Typography & Layout Fixes */
+      /* Base Layout & Reset */
       html, body {
         margin: 0;
         padding: 0;
@@ -29,15 +29,15 @@
         -moz-osx-font-smoothing: grayscale;
       }
 
-      /* Global Urdu Text Fix for all occurrences including dynamic fonts */
+      /* Critical Urdu Typography Fixes */
       .urdu-text, 
+      .font-urdu,
       [style*="Noto Nastaliq Urdu"],
-      [style*="font-urdu"],
-      .font-urdu {
+      [style*="font-urdu"] {
         font-family: 'Noto Nastaliq Urdu', serif !important;
         line-height: 2.5 !important; 
-        padding-bottom: 35px !important;
-        margin-bottom: -20px !important;
+        padding-bottom: 40px !important;
+        margin-bottom: -25px !important;
         overflow: visible !important;
         text-rendering: optimizeLegibility;
         direction: rtl;
@@ -49,7 +49,26 @@
         background-image: url("https://www.transparenttextures.com/patterns/arabesque.png");
         background-attachment: fixed;
       }
-      
+
+      /* Scroll Reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Custom Cursor Styles */
+      @media (pointer: fine) {
+        body.has-custom-cursor, 
+        body.has-custom-cursor * {
+          cursor: none !important;
+        }
+      }
+
       .custom-cursor-dot {
         position: fixed;
         top: 0;
@@ -78,33 +97,17 @@
         box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
       }
 
-      @media (pointer: fine) {
-        body.has-custom-cursor, 
-        body.has-custom-cursor * {
-          cursor: none !important;
-        }
-      }
-
       .text-gold {
         background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #aa771c);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
-      .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-      }
-      .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
       .golden-glow {
         filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
       }
 
+      /* Scrollbar Styling */
       ::-webkit-scrollbar {
         width: 8px;
       }
@@ -115,27 +118,9 @@
         background: var(--gold);
         border-radius: 4px;
       }
-
-      @keyframes pulse-gold {
-        0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-        70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-      }
-      .pulse-gold {
-        animation: pulse-gold 2s infinite;
-      }
-
-      @keyframes wa-pulse {
-        0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.8); }
-        70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-      }
-      .wa-pulse-gold {
-        animation: wa-pulse 2.5s infinite;
-      }
     </style>
 
-    <!-- Polyfill for process.env - Critical for Vercel/Client-side SDK stability -->
+    <!-- Critical Fix: Define process globally to prevent client-side crashes -->
     <script>
       window.process = window.process || { env: { API_KEY: "" } };
     </script>
@@ -157,7 +142,7 @@
     <!-- Main mounting point -->
     <div id="root"></div>
 
-    <!-- UI Logic Scripts -->
+    <!-- UI Interaction Scripts -->
     <script>
       window.addEventListener('DOMContentLoaded', () => {
         const observerOptions = { threshold: 0.1 };
@@ -175,7 +160,7 @@
       });
     </script>
 
-    <!-- Entry module - Using relative path for Vite/Vercel compatibility -->
+    <!-- Entry module - Using relative path for production compatibility -->
     <script type="module" src="./index.tsx"></script>
   </body>
 </html>
