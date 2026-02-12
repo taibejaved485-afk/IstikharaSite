@@ -12,6 +12,8 @@ import BenefitsSection from './components/BenefitsSection.tsx';
 import TrustCounter from './components/TrustCounter.tsx';
 import StoryModal from './components/StoryModal.tsx';
 import Footer from './components/Footer.tsx';
+import CustomCursor from './components/CustomCursor.tsx';
+import WhatsAppButton from './components/WhatsAppButton.tsx';
 import { Page, Blog } from './types.ts';
 import { SERVICES, SEED_BLOGS } from './constants.tsx';
 import { getBlogs, saveBlog } from './services/db.ts';
@@ -197,6 +199,7 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen selection:bg-amber-500 selection:text-emerald-950">
+      <CustomCursor />
       <AyatSlider />
       <Header onPageChange={handleNav} currentPage={currentPage} />
       
@@ -206,6 +209,8 @@ const App: React.FC = () => {
 
       <Footer onPageChange={handleNav} />
 
+      {/* Floating Buttons Grouping */}
+      <WhatsAppButton />
       <ChatWidget />
       
       {/* Interactive Story Modal */}

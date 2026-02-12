@@ -14,6 +14,65 @@
         --deep-green: #013220;
         --gold: #D4AF37;
         --gold-light: #fcf6ba;
+        --wa-green: #25D366;
+      }
+
+      /* Ensure body allows overflow to prevent Urdu nuqta cutting */
+      html, body {
+        overflow-x: hidden;
+        overflow-y: visible !important;
+      }
+
+      /* Custom Cursor Styles */
+      @media (pointer: fine) {
+        body.has-custom-cursor, 
+        body.has-custom-cursor * {
+          cursor: none !important;
+        }
+      }
+
+      .custom-cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        background-color: var(--gold);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 10px var(--gold);
+        transition: width 0.3s, height 0.3s, background-color 0.3s;
+      }
+
+      .custom-cursor-trailer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(212, 175, 55, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s;
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+      }
+
+      body.cursor-hovering .custom-cursor-dot {
+        width: 12px;
+        height: 12px;
+        background-color: var(--gold-light);
+        box-shadow: 0 0 20px var(--gold-light);
+      }
+
+      body.cursor-hovering .custom-cursor-trailer {
+        width: 60px;
+        height: 60px;
+        border-color: var(--gold);
+        background-color: rgba(212, 175, 55, 0.05);
       }
 
       .font-urdu { font-family: 'Noto Nastaliq Urdu', serif; }
@@ -121,6 +180,16 @@
       }
       .pulse-gold {
         animation: pulse-gold 2s infinite;
+      }
+
+      /* WhatsApp Specific Pulse */
+      @keyframes wa-pulse {
+        0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.8); }
+        70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+      }
+      .wa-pulse-gold {
+        animation: wa-pulse 2.5s infinite;
       }
     </style>
   <script type="importmap">
