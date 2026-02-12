@@ -12,6 +12,7 @@ const Header: React.FC<HeaderProps> = ({ onPageChange, currentPage }) => {
   const [scrolled, setScrolled] = useState(false);
   const [ayatIndex, setAyatIndex] = useState(0);
   const [ayatFade, setAyatFade] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Scroll effect for glass-morphism intensity
   useEffect(() => {
@@ -33,6 +34,11 @@ const Header: React.FC<HeaderProps> = ({ onPageChange, currentPage }) => {
   }, []);
 
   const currentAyat = AYATS[ayatIndex];
+
+  const handleMobileNav = (page: Page, topic?: string) => {
+    onPageChange(page, topic);
+    setMobileMenuOpen(false);
+  };
 
   const NavItem = ({ label, page, dropdownItems }: { label: string, page: Page, dropdownItems?: { label: string, key: string }[] }) => {
     const isActive = currentPage === page;
@@ -86,16 +92,16 @@ const Header: React.FC<HeaderProps> = ({ onPageChange, currentPage }) => {
   return (
     <header className="fixed top-0 left-0 w-full z-[100] flex flex-col pointer-events-none">
       {/* 1. TOP BAR: Quranic Ayat (Thin & Professional) */}
-      <div className="w-full bg-[#001f15]/90 backdrop-blur-sm border-b border-amber-900/20 py-1.5 pointer-events-auto overflow-visible">
-        <div className="container mx-auto px-6 overflow-visible">
+      <div className="w-full bg-[#001f15]/95 backdrop-blur-sm border-b border-amber-900/20 py-2 pointer-events-auto overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6">
           <div 
-            className={`transition-opacity duration-500 flex items-center justify-center gap-[25px] overflow-visible ${
+            className={`transition-opacity duration-500 flex flex-nowrap items-center justify-center gap-3 sm:gap-[25px] overflow-hidden ${
               ayatFade ? 'opacity-100' : 'opacity-0'
             }`}
           >
             <span 
-              className="font-arabic text-amber-400 text-sm md:text-lg whitespace-nowrap drop-shadow-[0_0_8px_rgba(251,191,36,0.3)]"
-              style={{ lineHeight: '2.8 !important', overflow: 'visible' }}
+              className="font-arabic text-amber-400 text-[10px] sm:text-sm md:text-lg whitespace-nowrap drop-shadow-[0_0_8px_rgba(251,191,36,0.3)] shrink-0"
+              style={{ lineHeight: '1.2', overflow: 'visible' }}
             >
               {currentAyat.arabic}
             </span>
@@ -104,8 +110,8 @@ const Header: React.FC<HeaderProps> = ({ onPageChange, currentPage }) => {
             <div className="w-[1px] h-4 bg-amber-500/20 self-center shrink-0"></div>
 
             <span 
-              className="font-urdu text-amber-100/60 text-[10px] md:text-sm italic whitespace-nowrap"
-              style={{ lineHeight: '2.8 !important', overflow: 'visible' }}
+              className="font-urdu text-amber-100/60 text-[8px] sm:text-[10px] md:text-sm italic truncate"
+              style={{ lineHeight: '1.2', overflow: 'visible' }}
             >
               {currentAyat.translation}
             </span>
@@ -115,26 +121,26 @@ const Header: React.FC<HeaderProps> = ({ onPageChange, currentPage }) => {
 
       {/* 2. MAIN NAV: Logo & Links (Glass-morphism) */}
       <div className={`w-full transition-all duration-500 pointer-events-auto ${
-        scrolled ? 'bg-[#013220]/85 backdrop-blur-lg h-16 shadow-2xl border-b border-amber-900/10' : 'bg-[#013220]/40 backdrop-blur-md h-24 border-b border-white/5'
+        scrolled ? 'bg-[#013220]/90 backdrop-blur-lg h-16 shadow-2xl border-b border-amber-900/10' : 'bg-[#013220]/60 backdrop-blur-md h-20 sm:h-24 border-b border-white/5'
       }`}>
-        <div className="container mx-auto px-6 h-full">
-          <div className="flex items-center justify-between h-full gap-8">
+        <div className="container mx-auto px-4 sm:px-6 h-full">
+          <div className="flex items-center justify-between h-full gap-4">
             
             {/* Logo Section */}
             <div 
-              className="flex items-center gap-4 cursor-pointer group shrink-0" 
+              className="flex items-center gap-3 sm:gap-4 cursor-pointer group shrink-0" 
               onClick={() => onPageChange(Page.Home)}
             >
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-[#013220] border-2 border-amber-500 rounded-full flex items-center justify-center shadow-lg shadow-amber-500/20 transform group-hover:rotate-12 transition-all duration-500">
-                <span className="text-lg md:text-xl font-bold text-gold font-title tracking-tighter">IS</span>
+              <div className="w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-[#013220] border-2 border-amber-500 rounded-full flex items-center justify-center shadow-lg shadow-amber-500/20 transform group-hover:rotate-12 transition-all duration-500">
+                <span className="text-sm sm:text-base md:text-xl font-bold text-gold font-title tracking-tighter">IS</span>
               </div>
-              <div className="hidden xl:block">
-                <h1 className="text-lg font-bold text-gold font-title tracking-[0.15em] leading-tight">ISTIKHARASITE</h1>
-                <p className="text-[8px] text-amber-200/40 uppercase tracking-[0.4em] font-title">Online Spiritual Portal</p>
+              <div className="hidden sm:block">
+                <h1 className="text-sm sm:text-base md:text-lg font-bold text-gold font-title tracking-[0.15em] leading-tight">ISTIKHARASITE</h1>
+                <p className="text-[7px] sm:text-[8px] text-amber-200/40 uppercase tracking-[0.4em] font-title">Online Spiritual Portal</p>
               </div>
             </div>
 
-            {/* Navigation Links with 30px gap */}
+            {/* Desktop Navigation Links with 30px gap (Hidden below 1024px) */}
             <nav className="hidden lg:flex items-center justify-center gap-[30px] h-full overflow-visible">
               <NavItem label="Home" page={Page.Home} />
               <NavItem label="Blog" page={Page.Blog} />
@@ -165,26 +171,106 @@ const Header: React.FC<HeaderProps> = ({ onPageChange, currentPage }) => {
               <NavItem label="Spiritual Counselling" page={Page.Counselling} />
             </nav>
 
-            {/* Portal Action */}
-            <div className="flex items-center gap-4 shrink-0">
+            {/* Mobile Actions */}
+            <div className="flex items-center gap-2 sm:gap-4 shrink-0">
               <button 
                 onClick={() => onPageChange(Page.Admin)}
-                className="hidden md:flex px-5 py-2 border border-amber-500/30 text-amber-500 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-amber-500 hover:text-emerald-950 transition-all duration-300 font-title"
+                className="hidden lg:flex px-5 py-2 border border-amber-500/30 text-amber-500 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-amber-500 hover:text-emerald-950 transition-all duration-300 font-title"
               >
-                Admin Access
+                Admin
               </button>
               
-              {/* Mobile Menu Trigger */}
-              <button className="lg:hidden w-10 h-10 flex items-center justify-center text-amber-500 bg-white/5 rounded-xl border border-white/10 hover:bg-amber-500/10 transition-all">
+              {/* Golden Hamburger Icon (Visible below 1024px) */}
+              <button 
+                onClick={() => setMobileMenuOpen(true)}
+                className="lg:hidden w-10 h-10 flex items-center justify-center text-amber-500 bg-white/5 rounded-xl border border-white/10 hover:bg-amber-500/10 transition-all"
+              >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
               </button>
             </div>
-
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Side Drawer */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[200] pointer-events-auto">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300"
+            onClick={() => setMobileMenuOpen(false)}
+          ></div>
+          
+          {/* Drawer Content */}
+          <div className="absolute right-0 top-0 h-full w-[80%] max-w-[320px] bg-[#013220] border-l border-amber-900/40 shadow-2xl flex flex-col animate-in slide-in-from-right duration-500 overflow-y-auto">
+            <div className="p-6 border-b border-amber-900/20 flex justify-between items-center">
+              <span className="text-gold font-bold tracking-widest text-sm font-title uppercase">Menu</span>
+              <button 
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-10 h-10 rounded-full bg-white/5 text-amber-500 flex items-center justify-center hover:bg-amber-500/10 transition-all"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <nav className="flex-1 p-6 space-y-2">
+              <button onClick={() => handleMobileNav(Page.Home)} className="w-full text-right text-gray-200 hover:text-amber-400 py-3 text-lg font-title uppercase tracking-widest border-b border-white/5">Home</button>
+              <button onClick={() => handleMobileNav(Page.Blog)} className="w-full text-right text-gray-200 hover:text-amber-400 py-3 text-lg font-title uppercase tracking-widest border-b border-white/5">Blog</button>
+              <button onClick={() => handleMobileNav(Page.Marriage)} className="w-full text-right text-gray-200 hover:text-amber-400 py-3 text-lg font-title uppercase tracking-widest border-b border-white/5">Marriage Service</button>
+              <button onClick={() => handleMobileNav(Page.Pregnancy)} className="w-full text-right text-gray-200 hover:text-amber-400 py-3 text-lg font-title uppercase tracking-widest border-b border-white/5">Pregnancy</button>
+              
+              <div className="pt-4 pb-2">
+                <span className="block text-amber-500/50 text-[10px] uppercase tracking-widest font-bold mb-2 text-right">Islamic Tawwez</span>
+                {[
+                  { label: 'Wazaif (وظائف)', key: 'wazaif' },
+                  { label: 'Mohbat (محبت)', key: 'love_marriage' },
+                  { label: 'Sehat (صحت)', key: 'health_shifa' },
+                  { label: 'Jadu ka Tor (جادو کا توڑ)', key: 'protection_shield' },
+                  { label: 'Kamyabi (کابیابی)', key: 'success_career' },
+                  { label: 'Rizq (رزق)', key: 'business_rizq' },
+                  { label: 'Hamal (حمل)', key: 'pregnancy' }
+                ].map(item => (
+                  <button 
+                    key={item.key} 
+                    onClick={() => handleMobileNav(Page.Tawwez, item.key)}
+                    className="w-full text-right text-gray-200 hover:text-amber-400 py-2 text-base font-urdu leading-[3.0] pb-[20px] overflow-visible"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="pt-4">
+                <span className="block text-amber-500/50 text-[10px] uppercase tracking-widest font-bold mb-2 text-right">Talismans</span>
+                {[
+                  { label: 'Protection (حفاظت)', key: 'protection_shield' },
+                  { label: 'Home/Family (گھریلو سکون)', key: 'family_peace' },
+                  { label: 'Mental Peace (ذہنی سکون)', key: 'talismans' }
+                ].map(item => (
+                  <button 
+                    key={item.key} 
+                    onClick={() => handleMobileNav(Page.Tawwez, item.key)}
+                    className="w-full text-right text-gray-200 hover:text-amber-400 py-2 text-base font-urdu leading-[3.0] pb-[20px] overflow-visible"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+
+              <button onClick={() => handleMobileNav(Page.Counselling)} className="w-full text-right text-gray-200 hover:text-amber-400 py-4 text-lg font-title uppercase tracking-widest border-t border-white/5 mt-4">Spiritual Counselling</button>
+              <button onClick={() => handleMobileNav(Page.Admin)} className="w-full text-right text-amber-500 py-4 text-lg font-title uppercase tracking-widest border-t border-white/5">Admin Access</button>
+            </nav>
+
+            <div className="p-8 border-t border-amber-900/20 bg-black/20">
+              <p className="text-[10px] text-amber-200/30 uppercase tracking-[0.3em] font-title text-center">© 2024 ISTIKHARASITE</p>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
