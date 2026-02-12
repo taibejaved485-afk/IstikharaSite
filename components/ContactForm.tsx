@@ -54,7 +54,7 @@ const ContactForm: React.FC = () => {
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   placeholder="اپنا نام لکھیں..."
-                  className="w-full bg-emerald-950/50 border border-amber-900/30 rounded-xl px-4 py-2.5 text-amber-100 placeholder:text-amber-100/20 outline-none focus:border-amber-500 transition-all font-urdu text-right text-base"
+                  className="w-full bg-emerald-950/50 border border-amber-900/30 rounded-xl px-4 py-2.5 text-amber-100 placeholder:text-amber-100/20 outline-none focus:border-amber-500 focus:shadow-[0_0_15px_rgba(212,175,55,0.2)] focus:ring-1 focus:ring-amber-500/20 transition-all duration-300 font-urdu text-right text-base"
                 />
               </div>
 
@@ -66,7 +66,7 @@ const ContactForm: React.FC = () => {
                   value={formData.phone}
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   placeholder="03xx-xxxxxxx"
-                  className="w-full bg-emerald-950/50 border border-amber-900/30 rounded-xl px-4 py-2.5 text-amber-100 placeholder:text-amber-100/20 outline-none focus:border-amber-500 transition-all text-left text-base"
+                  className="w-full bg-emerald-950/50 border border-amber-900/30 rounded-xl px-4 py-2.5 text-amber-100 placeholder:text-amber-100/20 outline-none focus:border-amber-500 focus:shadow-[0_0_15px_rgba(212,175,55,0.2)] focus:ring-1 focus:ring-amber-500/20 transition-all duration-300 text-left text-base"
                 />
               </div>
 
@@ -77,13 +77,13 @@ const ContactForm: React.FC = () => {
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                   placeholder="اپنے مسئلے کی تفصیل لکھیں..."
-                  className="w-full bg-emerald-950/50 border border-amber-900/30 rounded-xl px-4 py-2.5 text-amber-100 placeholder:text-amber-100/20 outline-none focus:border-amber-500 transition-all font-urdu text-right text-base resize-none"
+                  className="w-full bg-emerald-950/50 border border-amber-900/30 rounded-xl px-4 py-2.5 text-amber-100 placeholder:text-amber-100/20 outline-none focus:border-amber-500 focus:shadow-[0_0_15px_rgba(212,175,55,0.2)] focus:ring-1 focus:ring-amber-500/20 transition-all duration-300 font-urdu text-right text-base resize-none"
                 />
               </div>
 
               <button 
                 type="submit" 
-                className="w-full py-4 bg-amber-500 hover:bg-gold-light text-emerald-950 font-bold rounded-xl transition-all duration-300 shadow-xl shadow-amber-500/20 hover-shine transform hover:-translate-y-0.5 text-base tracking-widest font-title flex items-center justify-center gap-2 mt-4"
+                className="w-full py-4 bg-amber-500 hover:bg-gold-light text-emerald-950 font-bold rounded-xl transition-all duration-300 shadow-xl shadow-amber-500/20 hover-shine transform hover:-translate-y-1 hover:scale-[1.02] active:scale-95 text-base tracking-widest font-title flex items-center justify-center gap-2 mt-4"
               >
                 بھیجیں
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
