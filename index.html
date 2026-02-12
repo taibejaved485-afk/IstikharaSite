@@ -17,13 +17,14 @@
         --wa-green: #25D366;
       }
 
-      /* Ensure body allows overflow to prevent Urdu nuqta cutting */
+      /* Global resets and layout fixes */
       html, body {
         overflow-x: hidden;
         overflow-y: visible !important;
+        background-color: var(--deep-green);
       }
 
-      /* Custom Cursor Styles */
+      /* Custom Cursor Styles - Only enabled for pointer devices */
       @media (pointer: fine) {
         body.has-custom-cursor, 
         body.has-custom-cursor * {
@@ -102,7 +103,7 @@
         -webkit-text-fill-color: transparent;
       }
 
-      /* Premium Shine Animation */
+      /* Animations */
       @keyframes shine {
         0% { left: -100%; }
         20% { left: 100%; }
@@ -126,7 +127,6 @@
         animation: shine 1.5s infinite;
       }
 
-      /* Scroll Reveal */
       .reveal {
         opacity: 0;
         transform: translateY(30px);
@@ -137,12 +137,10 @@
         transform: translateY(0);
       }
 
-      /* Golden Glow */
       .golden-glow {
         filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
       }
 
-      /* Custom Scrollbar */
       ::-webkit-scrollbar {
         width: 8px;
       }
@@ -152,17 +150,6 @@
       ::-webkit-scrollbar-thumb {
         background: var(--gold);
         border-radius: 4px;
-      }
-      
-      .custom-scrollbar::-webkit-scrollbar {
-        width: 4px;
-      }
-      .custom-scrollbar::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: rgba(212, 175, 55, 0.3);
-        border-radius: 10px;
       }
 
       @keyframes float {
@@ -182,7 +169,6 @@
         animation: pulse-gold 2s infinite;
       }
 
-      /* WhatsApp Specific Pulse */
       @keyframes wa-pulse {
         0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.8); }
         70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
@@ -192,19 +178,22 @@
         animation: wa-pulse 2.5s infinite;
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
-  }
-}
-</script>
-</head>
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react": "https://esm.sh/react@^19.2.4",
+        "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+      }
+    }
+    </script>
+  </head>
   <body class="bg-islamic text-gray-100 min-h-screen overflow-x-hidden">
+    <!-- Main mounting point -->
     <div id="root"></div>
+
+    <!-- UI Logic Scripts -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const observerOptions = { threshold: 0.1 };
@@ -221,5 +210,8 @@
         };
       });
     </script>
+
+    <!-- Entry module - loaded relatively to ensure compatibility -->
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
