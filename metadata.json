@@ -1,0 +1,7 @@
+{
+  "name": "IstikharaSite",
+  "description": "IstikharaSite - Online Islamic Spiritual Portal. Quran-o-Sunnat ki roshni mein sahi rehnumayi.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
