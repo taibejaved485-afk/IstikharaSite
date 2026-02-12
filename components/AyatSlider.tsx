@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { AYATS } from '../constants';
 
@@ -20,18 +19,38 @@ const AyatSlider: React.FC = () => {
   const currentAyat = AYATS[index];
 
   return (
-    <div className="bg-[#012015] border-b border-amber-900/40 py-3 overflow-hidden shadow-[inset_0_0_20px_rgba(0,0,0,0.4)]">
-      <div className="container mx-auto px-4">
+    <div className="bg-[#012015] border-b border-amber-900/40 shadow-[inset_0_0_20px_rgba(0,0,0,0.4)]" style={{ padding: '10px 0', overflow: 'visible' }}>
+      <div className="container mx-auto px-4 overflow-visible">
         <div 
-          className={`transition-opacity duration-500 text-center flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 ${
+          className={`transition-opacity duration-500 flex items-center justify-center gap-[20px] ${
             fade ? 'opacity-100' : 'opacity-0'
           }`}
+          style={{ overflow: 'visible' }}
         >
-          <span className="font-arabic text-amber-400 text-lg md:text-xl drop-shadow-[0_0_8px_rgba(251,191,36,0.3)] tracking-wide">
+          {/* Arabic Text */}
+          <span 
+            className="font-arabic text-amber-400 text-lg md:text-xl drop-shadow-[0_0_8px_rgba(251,191,36,0.3)] tracking-wide whitespace-nowrap"
+            style={{ 
+              lineHeight: '2.5', 
+              overflow: 'visible',
+              display: 'inline-block'
+            }}
+          >
             {currentAyat.arabic}
           </span>
-          <div className="hidden md:block w-px h-4 bg-amber-500/20"></div>
-          <span className="font-urdu text-amber-100/70 text-sm md:text-base leading-relaxed max-w-2xl italic">
+
+          {/* Vertical Separator */}
+          <div className="w-px h-6 bg-amber-500/20 self-center shrink-0"></div>
+
+          {/* Translation Text */}
+          <span 
+            className="font-urdu text-amber-100/70 text-sm md:text-base italic whitespace-normal md:whitespace-nowrap"
+            style={{ 
+              lineHeight: '2.5', 
+              overflow: 'visible',
+              display: 'inline-block'
+            }}
+          >
             {currentAyat.translation}
           </span>
         </div>
