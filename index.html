@@ -19,12 +19,15 @@
 
       /* Global resets and layout fixes */
       html, body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
         overflow-x: hidden;
         overflow-y: visible !important;
         background-color: var(--deep-green);
       }
 
-      /* Custom Cursor Styles - Only enabled for pointer devices */
+      /* Custom Cursor Styles */
       @media (pointer: fine) {
         body.has-custom-cursor, 
         body.has-custom-cursor * {
@@ -44,7 +47,6 @@
         z-index: 10000;
         transform: translate(-50%, -50%);
         box-shadow: 0 0 10px var(--gold);
-        transition: width 0.3s, height 0.3s, background-color 0.3s;
       }
 
       .custom-cursor-trailer {
@@ -58,22 +60,7 @@
         pointer-events: none;
         z-index: 9999;
         transform: translate(-50%, -50%);
-        transition: width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s;
         box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
-      }
-
-      body.cursor-hovering .custom-cursor-dot {
-        width: 12px;
-        height: 12px;
-        background-color: var(--gold-light);
-        box-shadow: 0 0 20px var(--gold-light);
-      }
-
-      body.cursor-hovering .custom-cursor-trailer {
-        width: 60px;
-        height: 60px;
-        border-color: var(--gold);
-        background-color: rgba(212, 175, 55, 0.05);
       }
 
       .font-urdu { font-family: 'Noto Nastaliq Urdu', serif; }
@@ -82,9 +69,9 @@
       
       .urdu-text {
         font-family: 'Noto Nastaliq Urdu', serif;
-        /* THE SPECIFIC FIX: Ensure nuqtas (dots) never cut off */
         line-height: 2.2 !important;
-        padding-bottom: 25px !important;
+        padding-bottom: 30px !important; /* Increased for safety */
+        margin-bottom: -15px !important;
         overflow: visible !important;
         text-rendering: optimizeLegibility;
         direction: rtl;
@@ -101,30 +88,6 @@
         background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #aa771c);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-      }
-
-      /* Animations */
-      @keyframes shine {
-        0% { left: -100%; }
-        20% { left: 100%; }
-        100% { left: 100%; }
-      }
-      .hover-shine {
-        position: relative;
-        overflow: hidden;
-      }
-      .hover-shine::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 50%;
-        height: 100%;
-        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
-        transform: skewX(-25deg);
-      }
-      .hover-shine:hover::after {
-        animation: shine 1.5s infinite;
       }
 
       .reveal {
@@ -151,51 +114,33 @@
         background: var(--gold);
         border-radius: 4px;
       }
-
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
-      }
-      .animate-float {
-        animation: float 6s ease-in-out infinite;
-      }
-
-      @keyframes pulse-gold {
-        0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-        70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-      }
-      .pulse-gold {
-        animation: pulse-gold 2s infinite;
-      }
-
-      @keyframes wa-pulse {
-        0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.8); }
-        70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-      }
-      .wa-pulse-gold {
-        animation: wa-pulse 2.5s infinite;
-      }
     </style>
+
+    <!-- Polyfill for process.env used by SDKs -->
+    <script>
+      window.process = window.process || { env: { API_KEY: "" } };
+    </script>
+
     <script type="importmap">
     {
       "imports": {
-        "react/": "https://esm.sh/react@^19.2.4/",
-        "react": "https://esm.sh/react@^19.2.4",
-        "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
-        "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+        "react": "https://esm.sh/react@19.2.4",
+        "react/": "https://esm.sh/react@19.2.4/",
+        "react-dom": "https://esm.sh/react-dom@19.2.4",
+        "react-dom/": "https://esm.sh/react-dom@19.2.4/",
+        "react-dom/client": "https://esm.sh/react-dom@19.2.4/client",
+        "@google/genai": "https://esm.sh/@google/genai@1.41.0"
       }
     }
     </script>
   </head>
-  <body class="bg-islamic text-gray-100 min-h-screen overflow-x-hidden">
+  <body class="bg-islamic text-gray-100 min-h-screen">
     <!-- Main mounting point -->
     <div id="root"></div>
 
     <!-- UI Logic Scripts -->
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
+      window.addEventListener('DOMContentLoaded', () => {
         const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -211,7 +156,7 @@
       });
     </script>
 
-    <!-- Entry module - loaded relatively to ensure compatibility -->
+    <!-- Entry module -->
     <script type="module" src="./index.tsx"></script>
   </body>
 </html>
