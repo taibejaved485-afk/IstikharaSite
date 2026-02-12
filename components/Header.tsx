@@ -63,9 +63,10 @@ const Header: React.FC<HeaderProps> = ({ onPageChange, currentPage }) => {
     }`}>
       <div className="container mx-auto px-6 h-full">
         <div className="flex items-center justify-between h-full">
+          {/* Logo Section: Professional Circle branding matching Favicon */}
           <div className="flex items-center gap-4 cursor-pointer group" onClick={() => onPageChange(Page.Home)}>
-            <div className="w-12 h-12 bg-amber-500 rounded-lg flex items-center justify-center shadow-lg shadow-amber-500/20 transform group-hover:rotate-[360deg] transition-transform duration-700">
-              <span className="text-2xl font-bold text-emerald-950 font-title">IS</span>
+            <div className="w-12 h-12 bg-[#013220] border-2 border-amber-500 rounded-full flex items-center justify-center shadow-lg shadow-amber-500/10 transform group-hover:scale-105 transition-all duration-500">
+              <span className="text-xl font-bold text-gold font-title tracking-tighter">IS</span>
             </div>
             <div className="hidden sm:block">
               <h1 className="text-xl font-bold text-gold font-title tracking-[0.1em]">ISTIKHARASITE</h1>
