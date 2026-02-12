@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 
 interface StatItem {
@@ -107,7 +106,7 @@ const Counter: React.FC<{ target: number; suffix: string }> = ({ target, suffix 
 
 const TrustCounter: React.FC = () => {
   return (
-    <section className="py-24 relative overflow-hidden bg-[#011a10]">
+    <section className="py-24 relative overflow-hidden bg-[#011a10] urdu-container">
       {/* Subtle Arch Pattern Background */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none flex justify-center items-center">
         <svg className="w-full h-full max-w-4xl" viewBox="0 0 100 100" fill="currentColor">
@@ -121,7 +120,7 @@ const TrustCounter: React.FC = () => {
             <div 
               key={idx} 
               className="reveal flex flex-col items-center text-center p-8 border border-amber-900/10 rounded-[32px] bg-[#013220]/20 backdrop-blur-sm transition-all duration-500 hover:border-amber-500/30"
-              style={{ transitionDelay: `${idx * 100}ms` }}
+              style={{ transitionDelay: `${idx * 100}ms`, height: 'auto', overflow: 'visible' }}
             >
               <div className="w-20 h-20 bg-amber-500/10 border border-amber-500/20 rounded-2xl flex items-center justify-center text-gold mb-6 shadow-lg shadow-amber-500/5">
                 {stat.icon}
@@ -129,7 +128,7 @@ const TrustCounter: React.FC = () => {
               
               <Counter target={stat.target} suffix={stat.suffix} />
               
-              <h4 className="text-xl font-urdu text-amber-500 mb-1 urdu-text leading-tight">
+              <h4 className="text-xl font-urdu text-amber-500 mb-6 urdu-text leading-[3.2]" style={{ paddingBottom: '30px !important' }}>
                 {stat.urduLabel}
               </h4>
               <p className="text-xs uppercase tracking-[0.3em] text-amber-100/40 font-title font-bold">

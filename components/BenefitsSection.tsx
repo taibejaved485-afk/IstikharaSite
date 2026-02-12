@@ -79,17 +79,17 @@ const benefits: Benefit[] = [
 
 const BenefitsSection: React.FC = () => {
   return (
-    <section className="py-32 relative overflow-hidden bg-[#011a10]">
+    <section className="py-32 relative overflow-hidden bg-[#011a10] urdu-container">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[120px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 translate-y-1/2"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="reveal text-center mb-24">
-          <h2 className="text-5xl md:text-7xl font-bold text-gold font-title golden-glow mb-6">
+          <h2 className="text-5xl md:text-7xl font-bold text-gold font-title golden-glow mb-12 urdu-text" style={{ paddingBottom: '40px !important' }}>
             ہماری خدمت کی خصوصیات
           </h2>
-          <p className="text-2xl md:text-3xl font-urdu text-amber-100/70 urdu-text">
+          <p className="text-2xl md:text-3xl font-urdu text-amber-100/70 urdu-text" style={{ paddingBottom: '30px !important' }}>
             قرآن و سنت کی روشنی میں آپ کی بہترین رہنمائی
           </p>
           <div className="w-48 h-1 bg-gradient-to-r from-transparent via-amber-500/40 to-transparent mx-auto mt-8"></div>
@@ -100,7 +100,7 @@ const BenefitsSection: React.FC = () => {
             <div 
               key={idx} 
               className="reveal group bg-[#012518]/60 p-10 rounded-[48px] border border-amber-900/10 hover:border-amber-500/40 transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_20px_60px_rgba(212,175,55,0.08)]"
-              style={{ transitionDelay: `${idx * 100}ms` }}
+              style={{ transitionDelay: `${idx * 100}ms`, height: 'auto', overflow: 'visible' }}
             >
               <div className="flex flex-col items-center text-center">
                 {/* Icon Circle */}
@@ -108,7 +108,7 @@ const BenefitsSection: React.FC = () => {
                   {benefit.icon}
                 </div>
 
-                <h4 className="text-3xl font-urdu text-gold mb-4 urdu-text group-hover:text-amber-300 transition-colors">
+                <h4 className="text-3xl font-urdu text-gold mb-6 urdu-text group-hover:text-amber-300 transition-colors" style={{ paddingBottom: '35px !important' }}>
                   {benefit.urduTitle}
                 </h4>
                 
@@ -118,7 +118,7 @@ const BenefitsSection: React.FC = () => {
 
                 <div className="w-12 h-px bg-amber-900/30 mb-6 group-hover:w-24 group-hover:bg-amber-500/50 transition-all duration-500"></div>
 
-                <p className="text-2xl font-urdu text-amber-100/60 leading-relaxed urdu-text mb-2">
+                <p className="text-2xl font-urdu text-amber-100/60 leading-[3.2] urdu-text mb-2" style={{ height: 'auto', paddingBottom: '30px !important' }}>
                   {benefit.urduDescription}
                 </p>
                 <p className="text-[10px] text-gray-500 font-title uppercase tracking-widest italic">

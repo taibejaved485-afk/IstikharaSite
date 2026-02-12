@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Page } from '../types';
 
@@ -51,10 +50,10 @@ const talismans = [
 
 const TalismanSection: React.FC<TalismanSectionProps> = ({ onPageChange }) => {
   return (
-    <section className="py-32 relative overflow-hidden bg-[#012015]">
+    <section className="py-32 relative overflow-hidden bg-[#012015] urdu-container">
       <div className="container mx-auto px-6">
         <div className="reveal text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-title font-bold text-gold golden-glow uppercase tracking-[0.2em] mb-4">
+          <h2 className="text-4xl md:text-5xl font-title font-bold text-gold golden-glow uppercase tracking-[0.2em] mb-12 urdu-text" style={{ paddingBottom: '40px !important' }}>
             Popular Talismans & Taweezat
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto"></div>
@@ -66,7 +65,7 @@ const TalismanSection: React.FC<TalismanSectionProps> = ({ onPageChange }) => {
               key={idx} 
               onClick={() => onPageChange(Page.Tawwez, item.topic)}
               className="reveal relative group bg-[#111111] p-10 flex flex-col items-center text-center transition-all duration-500 hover:-translate-y-2 border border-transparent hover:border-amber-900/30 cursor-pointer"
-              style={{ transitionDelay: `${idx * 150}ms` }}
+              style={{ transitionDelay: `${idx * 150}ms`, height: 'auto', overflow: 'visible' }}
             >
               {/* Golden Corners */}
               <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold opacity-60 group-hover:opacity-100 transition-opacity"></div>
@@ -83,10 +82,10 @@ const TalismanSection: React.FC<TalismanSectionProps> = ({ onPageChange }) => {
                 {item.icon}
               </div>
 
-              <h4 className="relative z-10 text-2xl font-bold text-amber-100 font-title mb-2 group-hover:text-gold transition-colors">
+              <h4 className="relative z-10 text-2xl font-bold text-amber-100 font-title mb-6 group-hover:text-gold transition-colors">
                 {item.title}
               </h4>
-              <p className="relative z-10 text-xl font-urdu text-amber-500/80 mb-8 urdu-text leading-tight">
+              <p className="relative z-10 text-2xl font-urdu text-amber-500/80 mb-12 urdu-text leading-[3.2]" style={{ paddingBottom: '35px !important' }}>
                 {item.urduTitle}
               </p>
 

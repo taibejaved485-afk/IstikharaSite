@@ -41,14 +41,14 @@ interface SpecializedGridProps {
 
 const SpecializedGrid: React.FC<SpecializedGridProps> = ({ onPageChange }) => {
   return (
-    <section className="py-24 relative overflow-hidden bg-[#011a10]">
+    <section className="py-24 relative overflow-hidden bg-[#011a10] urdu-container">
       {/* Background patterns */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/islamic-art.png')]"></div>
       
       <div className="container mx-auto px-6">
         <div className="reveal text-center mb-20">
           <h2 className="text-amber-500 font-title uppercase tracking-[0.4em] text-xs font-bold mb-4">Specialized Guidance</h2>
-          <h3 className="text-4xl md:text-6xl font-bold text-gold font-title golden-glow">مخصوص مسائل کا حل</h3>
+          <h3 className="text-4xl md:text-6xl font-bold text-gold font-title golden-glow urdu-text" style={{ paddingBottom: '30px !important' }}>مخصوص مسائل کا حل</h3>
           <div className="w-32 h-1 bg-amber-500/20 mx-auto mt-8"></div>
         </div>
 
@@ -57,7 +57,7 @@ const SpecializedGrid: React.FC<SpecializedGridProps> = ({ onPageChange }) => {
             <div 
               key={idx} 
               className="reveal group relative bg-[#012015] p-10 rounded-[40px] border border-amber-900/10 transition-all duration-700 hover:border-amber-500/50 hover:shadow-[0_0_40px_rgba(212,175,55,0.15)] flex flex-col items-center text-center cursor-default"
-              style={{ transitionDelay: `${idx * 150}ms` }}
+              style={{ transitionDelay: `${idx * 150}ms`, height: 'auto', overflow: 'visible' }}
             >
               {/* Icon Container */}
               <div className="w-24 h-24 bg-emerald-950/50 rounded-full border border-amber-900/20 flex items-center justify-center text-5xl mb-8 group-hover:scale-110 group-hover:bg-amber-500/5 transition-all duration-500 shadow-inner shadow-black">
@@ -69,7 +69,7 @@ const SpecializedGrid: React.FC<SpecializedGridProps> = ({ onPageChange }) => {
                 {cat.title}
               </h4>
               
-              <p className="text-2xl font-urdu text-amber-500/90 leading-relaxed mb-10 urdu-text h-[120px] flex items-center justify-center">
+              <p className="text-2xl font-urdu text-amber-500/90 leading-[3.2] mb-10 urdu-text flex items-center justify-center" style={{ height: 'auto', minHeight: '140px', paddingBottom: '40px !important' }}>
                 {cat.urduTitle}
               </p>
 
