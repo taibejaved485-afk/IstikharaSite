@@ -21,9 +21,9 @@ const ServicePage: React.FC<ServicePageProps> = ({ topic }) => {
     const parts = text.split(/(\*\*.*?\*\*)/g);
     return parts.map((part, i) => {
       if (part.startsWith('**') && part.endsWith('**')) {
-        return <strong key={i} className="text-gold block mb-4 text-2xl md:text-3xl font-urdu tracking-wide leading-[2.2] pb-6">{part.slice(2, -2)}</strong>;
+        return <strong key={i} className="text-gold block mb-4 text-2xl md:text-3xl font-urdu tracking-wide leading-[2.8] pb-[10px]">{part.slice(2, -2)}</strong>;
       }
-      return <span key={i} className="block mb-6 leading-[2.2] pb-6">{part}</span>;
+      return <span key={i} className="block mb-6 leading-[2.8] pb-[10px]">{part}</span>;
     });
   };
 
@@ -31,7 +31,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ topic }) => {
     <div className="container mx-auto px-4 py-16 animate-in fade-in duration-700">
       {/* Hero Header */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-6xl font-urdu text-gold mb-6 urdu-text leading-[2.2] pb-6 golden-glow">
+        <h1 className="text-4xl md:text-6xl font-urdu text-gold mb-6 urdu-text leading-[2.8] pb-[10px] golden-glow">
           {data.title}
         </h1>
         <div className="w-24 h-1 bg-amber-500 mx-auto opacity-50"></div>
@@ -52,11 +52,11 @@ const ServicePage: React.FC<ServicePageProps> = ({ topic }) => {
           </div>
           
           <div className="relative text-center z-10">
-            <p className="text-4xl md:text-6xl font-arabic text-amber-200 mb-12 leading-[2.2] pb-6 drop-shadow-[0_0_20px_rgba(251,191,36,0.3)]">
+            <p className="text-4xl md:text-6xl font-arabic text-amber-200 mb-12 leading-[2.8] pb-[10px] drop-shadow-[0_0_20px_rgba(251,191,36,0.3)]">
               {data.ayat}
             </p>
             <div className="w-32 h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto mb-12"></div>
-            <p className="text-2xl md:text-3xl text-amber-400 font-urdu urdu-text italic leading-[2.2] pb-6">
+            <p className="text-2xl md:text-3xl text-amber-400 font-urdu urdu-text italic leading-[2.8] pb-[10px]">
               {data.translation}
             </p>
           </div>
@@ -67,7 +67,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ topic }) => {
       <div className="max-w-4xl mx-auto space-y-16 text-right pb-24">
         {data.paragraphs.map((p, idx) => (
           <div key={idx} className="reveal flex gap-8 items-start justify-end group">
-            <div className="text-xl md:text-2xl text-gray-300 urdu-text leading-[2.2] pb-6 flex-1">
+            <div className="text-xl md:text-2xl text-gray-300 urdu-text leading-[2.8] pb-[10px] flex-1">
               {renderParagraph(p)}
             </div>
             <div className="w-4 h-4 bg-amber-500 rounded-full mt-10 shrink-0 shadow-[0_0_15px_rgba(251,191,36,0.6)] group-hover:scale-125 transition-transform"></div>
@@ -77,7 +77,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ topic }) => {
 
       {/* Footer Call to Action */}
       <div className="mt-12 text-center border-t border-amber-900/20 pt-20">
-        <h4 className="text-2xl font-urdu text-amber-100 mb-8 urdu-text leading-[2.2] pb-6">کیا آپ کو کسی مخصوص روحانی مدد کی ضرورت ہے؟</h4>
+        <h4 className="text-2xl font-urdu text-amber-100 mb-8 urdu-text leading-[2.8] pb-[10px]">کیا آپ کو کسی مخصوص روحانی مدد کی ضرورت ہے؟</h4>
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
           <a 
             href="#contact-section"

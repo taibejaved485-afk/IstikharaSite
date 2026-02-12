@@ -71,7 +71,7 @@ const ChatWidget: React.FC = () => {
                 <div className={`max-w-[85%] p-4 rounded-2xl text-sm ${
                   m.role === 'user' 
                     ? 'bg-amber-500 text-emerald-950 font-medium rounded-br-none shadow-md' 
-                    : 'bg-emerald-900/60 text-amber-50 border border-amber-900/20 rounded-bl-none font-urdu leading-[2.5] text-right'
+                    : 'bg-emerald-900/60 text-amber-50 border border-amber-900/20 rounded-bl-none font-urdu leading-[2.8] text-right'
                 }`}>
                   {m.parts[0].text}
                 </div>

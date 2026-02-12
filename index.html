@@ -49,19 +49,29 @@
         .container { max-width: 1320px !important; }
       }
 
-      /* Hard-coded Urdu Typography Fix - Prevents Dots Clipping with 2.5 line-height */
+      /* Global Urdu Typography Fix - Line Height 2.8 and Padding Fix */
       .urdu-text, 
       .font-urdu,
       [style*="Noto Nastaliq Urdu"],
-      [style*="font-urdu"] {
+      [style*="font-urdu"],
+      .urdu-text p, .urdu-text h1, .urdu-text h2, .urdu-text h3, .urdu-text h4, .urdu-text span, .urdu-text li, .urdu-text label,
+      .font-urdu p, .font-urdu h1, .font-urdu h2, .font-urdu h3, .font-urdu h4, .font-urdu span, .font-urdu li, .font-urdu label {
         font-family: 'Noto Nastaliq Urdu', serif !important;
-        line-height: 2.5 !important; 
-        padding-bottom: 15px !important;
-        margin-bottom: -10px !important;
+        line-height: 2.8 !important; 
+        padding-bottom: 10px !important;
         overflow: visible !important;
         text-rendering: optimizeLegibility;
         direction: rtl;
-        display: block;
+      }
+
+      /* Display rules to ensure padding is respected */
+      p.urdu-text, h1.urdu-text, h2.urdu-text, h3.urdu-text, h4.urdu-text, li.urdu-text, label.urdu-text,
+      .urdu-text p, .urdu-text h1, .urdu-text h2, .urdu-text h3, .urdu-text h4, .urdu-text li, .urdu-text label {
+        display: block !important;
+      }
+      
+      span.urdu-text, .urdu-text span, .font-urdu span {
+        display: inline-block !important;
       }
 
       .bg-islamic {

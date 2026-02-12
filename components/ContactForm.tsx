@@ -34,7 +34,7 @@ const ContactForm: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <p className="text-2xl md:text-3xl font-urdu text-amber-100 leading-[2.5] pb-6 urdu-text">
+              <p className="text-2xl md:text-3xl font-urdu text-amber-100 leading-[2.8] pb-[10px] urdu-text">
                 شکریہ! آپ کا سوال مل گیا ہے، ہم جلد رابطہ کریں گے۔
               </p>
               <button 
@@ -47,7 +47,7 @@ const ContactForm: React.FC = () => {
           ) : (
             <form onSubmit={handleSubmit} className="relative z-10 space-y-8">
               <div className="space-y-2">
-                <label className="block text-xl font-urdu text-gold text-right pr-2 leading-[2.5]">آپ کا نام</label>
+                <label className="block text-xl font-urdu text-gold text-right pr-2 leading-[2.8] pb-[10px]">آپ کا نام</label>
                 <input 
                   type="text" 
                   required
@@ -59,7 +59,7 @@ const ContactForm: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="block text-xl font-urdu text-gold text-right pr-2 leading-[2.5]">واٹس ایپ نمبر</label>
+                <label className="block text-xl font-urdu text-gold text-right pr-2 leading-[2.8] pb-[10px]">واٹس ایپ نمبر</label>
                 <input 
                   type="tel" 
                   required
@@ -71,7 +71,7 @@ const ContactForm: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="block text-xl font-urdu text-gold text-right pr-2 leading-[2.5]">آپ کا مسئلہ</label>
+                <label className="block text-xl font-urdu text-gold text-right pr-2 leading-[2.8] pb-[10px]">آپ کا مسئلہ</label>
                 <textarea 
                   rows={4}
                   value={formData.message}

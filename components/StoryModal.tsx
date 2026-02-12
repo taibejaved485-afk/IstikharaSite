@@ -58,7 +58,7 @@ const StoryModal: React.FC<StoryModalProps> = ({ blog, onClose }) => {
             </svg>
           </button>
           
-          <h3 className="text-3xl md:text-5xl font-urdu text-gold golden-glow urdu-text leading-[2.2] pb-6 text-right pr-6">
+          <h3 className="text-3xl md:text-5xl font-urdu text-gold golden-glow urdu-text leading-[2.8] pb-[10px] text-right pr-6">
             {blog.title}
           </h3>
         </div>
@@ -72,10 +72,10 @@ const StoryModal: React.FC<StoryModalProps> = ({ blog, onClose }) => {
           {/* Section 1: The Struggle (آزمائش) */}
           <div className="relative reveal active">
             <div className="flex items-center justify-end gap-4 mb-8">
-              <h4 className="text-2xl font-urdu text-amber-500 urdu-text leading-[2.2] pb-6">پہلا مرحلہ: آزمائش اور جدوجہد</h4>
+              <h4 className="text-2xl font-urdu text-amber-500 urdu-text leading-[2.8] pb-[10px]">پہلا مرحلہ: آزمائش اور جدوجہد</h4>
               <div className="w-12 h-1 bg-amber-500/20" />
             </div>
-            <p className="text-xl md:text-2xl text-gray-300 leading-[2.2] pb-6 urdu-text" style={{ fontFamily: blog.bodyFont }}>
+            <p className="text-xl md:text-2xl text-gray-300 leading-[2.8] pb-[10px] urdu-text" style={{ fontFamily: blog.bodyFont }}>
               {blog.struggle}
             </p>
           </div>
@@ -83,9 +83,9 @@ const StoryModal: React.FC<StoryModalProps> = ({ blog, onClose }) => {
           {/* Section 2: The Spiritual Solution (روحانی حل) */}
           <div className="relative reveal active bg-amber-500/5 p-10 rounded-[40px] border border-amber-500/20 shadow-inner overflow-visible">
              <div className="absolute top-0 right-10 -translate-y-1/2 bg-[#011a10] px-6 py-2 border border-amber-500/20 rounded-full">
-               <h4 className="text-2xl font-urdu text-gold urdu-text leading-[2.2] pb-2">روحانی حل اور وظیفہ</h4>
+               <h4 className="text-2xl font-urdu text-gold urdu-text leading-[2.8] pb-2">روحانی حل اور وظیفہ</h4>
              </div>
-            <p className="text-xl md:text-2xl text-amber-100 leading-[2.2] pb-6 urdu-text" style={{ fontFamily: blog.bodyFont }}>
+            <p className="text-xl md:text-2xl text-amber-100 leading-[2.8] pb-[10px] urdu-text" style={{ fontFamily: blog.bodyFont }}>
               {blog.solution}
             </p>
           </div>
@@ -93,10 +93,10 @@ const StoryModal: React.FC<StoryModalProps> = ({ blog, onClose }) => {
           {/* Section 3: The Final Result (کامیابی) */}
           <div className="relative reveal active">
              <div className="flex items-center justify-end gap-4 mb-8">
-              <h4 className="text-2xl font-urdu text-emerald-400 urdu-text leading-[2.2] pb-6">نتیجہ اور کامیابی</h4>
+              <h4 className="text-2xl font-urdu text-emerald-400 urdu-text leading-[2.8] pb-[10px]">نتیجہ اور کامیابی</h4>
               <div className="w-12 h-1 bg-emerald-400/20" />
             </div>
-            <p className="text-xl md:text-2xl text-gray-200 leading-[2.2] pb-6 urdu-text" style={{ fontFamily: blog.bodyFont }}>
+            <p className="text-xl md:text-2xl text-gray-200 leading-[2.8] pb-[10px] urdu-text" style={{ fontFamily: blog.bodyFont }}>
               {blog.result}
             </p>
           </div>
