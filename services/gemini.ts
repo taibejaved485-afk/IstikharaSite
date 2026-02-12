@@ -2,11 +2,15 @@
 import { GoogleGenAI } from "@google/genai";
 import { ChatMessage } from "../types";
 
-// Always use new GoogleGenAI({apiKey: process.env.API_KEY}) to initialize the client.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize safely. If process.env.API_KEY is missing, it won't crash the whole module evaluation.
+const getAIClient = () => {
+  const apiKey = (window as any).process?.env?.API_KEY || "";
+  return new GoogleGenAI({ apiKey });
+};
 
 export const getIslamicAssistantResponse = async (history: ChatMessage[], message: string) => {
   try {
+    const ai = getAIClient();
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: [
@@ -21,14 +25,12 @@ Guidelines:
 - Use polite Urdu (Aap/Janab) and maintain a respectful tone.
 - Answer questions regarding Marriage, Health, Wazaif, and Success only based on authentic Islamic teachings.
 - If a user asks about complex 'Jadu' (magic) or 'Talisman' (taweez) issues, provide spiritual comfort but kindly advise them to consult a qualified local scholar (Mufti or Alim).
-- Strictly avoid political or controversial sectarian debates. If asked, politely decline to comment on such matters.
-- Keep answers concise and well-formatted using bullet points for readability.
-- Your primary goal is to provide guidance based on the Quran and Sunnah with humility.`,
+- Strictly avoid political or controversial sectarian debates.
+- Keep answers concise and well-formatted using bullet points for readability.`,
         temperature: 0.6,
       }
     });
     
-    // Direct access to .text property on response
     return response.text;
   } catch (error) {
     console.error("AI Assistant Error:", error);

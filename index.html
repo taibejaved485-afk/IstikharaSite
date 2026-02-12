@@ -1,9 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IstikharaSite | Online Islamic Spiritual Portal</title>
+    
+    <!-- Critical: Polyfill process.env BEFORE any modules load -->
+    <script>
+      window.process = {
+        env: {
+          API_KEY: "" 
+        }
+      };
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,18 +37,17 @@
         overflow-y: visible !important;
         background-color: var(--deep-green);
         -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
       }
 
-      /* Critical Urdu Typography Fixes */
+      /* Hard-coded Urdu Typography Fix */
       .urdu-text, 
       .font-urdu,
       [style*="Noto Nastaliq Urdu"],
       [style*="font-urdu"] {
         font-family: 'Noto Nastaliq Urdu', serif !important;
         line-height: 2.5 !important; 
-        padding-bottom: 40px !important;
-        margin-bottom: -25px !important;
+        padding-bottom: 45px !important;
+        margin-bottom: -30px !important;
         overflow: visible !important;
         text-rendering: optimizeLegibility;
         direction: rtl;
@@ -50,7 +60,6 @@
         background-attachment: fixed;
       }
 
-      /* Scroll Reveal */
       .reveal {
         opacity: 0;
         transform: translateY(30px);
@@ -107,7 +116,6 @@
         filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
       }
 
-      /* Scrollbar Styling */
       ::-webkit-scrollbar {
         width: 8px;
       }
@@ -119,11 +127,6 @@
         border-radius: 4px;
       }
     </style>
-
-    <!-- Critical Fix: Define process globally to prevent client-side crashes -->
-    <script>
-      window.process = window.process || { env: { API_KEY: "" } };
-    </script>
 
     <script type="importmap">
     {
@@ -139,11 +142,14 @@
     </script>
   </head>
   <body class="bg-islamic text-gray-100 min-h-screen">
-    <!-- Main mounting point -->
     <div id="root"></div>
 
-    <!-- UI Interaction Scripts -->
     <script>
+      // Global error tracker to help debug live site issues
+      window.onerror = function(msg, url, line, col, error) {
+        console.error("Global Error: ", msg, " at ", url, ":", line);
+      };
+
       window.addEventListener('DOMContentLoaded', () => {
         const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
@@ -160,7 +166,7 @@
       });
     </script>
 
-    <!-- Entry module - Using relative path for production compatibility -->
+    <!-- Entry module - Use relative path -->
     <script type="module" src="./index.tsx"></script>
   </body>
 </html>
